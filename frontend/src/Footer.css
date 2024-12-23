@@ -1,0 +1,15 @@
+.footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  font-size: 0.9rem;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+body {
+  margin-bottom: 50px; /* Adjust if needed to make space for the footer */
+}

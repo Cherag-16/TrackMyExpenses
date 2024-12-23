@@ -1,0 +1,84 @@
+/* Sidebar styling */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background-color: #333;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 20px;
+  z-index: 1000;
+}
+
+.sidebar-content {
+  width: 100%;
+}
+
+.sidebar-link {
+  display: block;
+  color: white;
+  padding: 15px 20px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: background-color 0.3s;
+}
+
+.sidebar-link:hover {
+  background-color: #444;
+}
+
+.sidebar-link.active {
+  background-color: #42A5F5;
+}
+
+/* Styling for the sidebar toggle button */
+.sidebar-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 30px;
+  background-color: #222; /* Dark black color */
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px; /* Optional rounded corners */
+  z-index: 1001; /* Ensure it's above the sidebar */
+  transition: background-color 0.3s ease;
+}
+
+/* Button hover effect */
+.sidebar-toggle:hover {
+  background-color: #444; /* Darker shade when hovered */
+  transform: scale(1.1); /* Slight zoom-in effect on hover */
+}
+
+/* Preventing overlap between the button and sidebar */
+.sidebar-toggle {
+  z-index: 1001; /* Ensure the button is on top */
+}
+
+/* Media Queries for responsive design */
+@media screen and (max-width: 768px) {
+  .sidebar {
+    width: 200px;
+  }
+
+  .sidebar-link {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .sidebar {
+    width: 180px;
+  }
+
+  .sidebar-link {
+    font-size: 0.9rem;
+  }
+}
