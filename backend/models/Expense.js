@@ -1,10 +1,12 @@
 const mongoose = require('mongoose');
 
 const expenseSchema = new mongoose.Schema({
-  name: String,
-  amount: Number,
-  category: String,
-  date: { type: Date, default: Date.now }
+  title: { type: String, required: true },
+  amount: { type: Number, required: true },
+  category: { type: String, required: true },
+  date: { type: Date, default: Date.now },
 });
 
-module.exports = mongoose.model('Expense', expenseSchema);
+const Expense = mongoose.model('Expense', expenseSchema);
+
+module.exports = Expense;

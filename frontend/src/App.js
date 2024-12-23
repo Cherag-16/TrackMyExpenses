@@ -37,6 +37,9 @@ const App = () => {
         <h1 className="title">TrackMyExpenses</h1>
       </header>
       </div>
+      <div>
+        <MyExpenses/>
+      </div>
       <div className="app-container">
         <Sidebar />
         <div className="main-content">

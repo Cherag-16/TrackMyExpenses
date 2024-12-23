@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import './App.css'
 
 
+
+
+
 const formatDate = (date) => {
   const d = new Date(date);
   const day = d.getDate().toString().padStart(2, '0');  
@@ -11,6 +14,14 @@ const formatDate = (date) => {
 };
 
 const MyExpenses = () => {
+
+  useEffect(() => {
+    fetch('http://localhost:5000/expenses')
+      .then(response => response.json())
+      .then(data => setExpenses(data))
+      .catch(err => console.error('Error fetching expenses:', err));
+  }, []);
+  
   const [expenses, setExpenses] = useState(() => JSON.parse(localStorage.getItem('expenses')) || []);
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
   const [isEditing, setIsEditing] = useState(false);
