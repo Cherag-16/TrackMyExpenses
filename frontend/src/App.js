@@ -2,7 +2,6 @@
 // All Rights Reserved.
 // This code is for personal use only. Unauthorized use, copying, or distribution is prohibited.
 
-
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Sidebar from './Sidebar';  
@@ -36,9 +35,6 @@ const App = () => {
         <img src="/logo.webp" alt="Logo" className="logo" />
         <h1 className="title">TrackMyExpenses</h1>
       </header>
-      </div>
-      <div>
-        <MyExpenses/>
       </div>
       <div className="app-container">
         <Sidebar />
