@@ -1,53 +1,21 @@
-
 const express = require('express');
-const Expense = require('../models/Expense');
-
 const router = express.Router();
+const Expense = require('../models/Expense')
+const expenseController = require('../controllers/expenseController'); // Adjust the path based on your folder structure
 
-// Get all expenses
-router.get('/', async (req, res) => {
-  try {
-    const expenses = await Expense.find();
-    res.json(expenses);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-});
+// Route to create a new expense
+router.post('/', expenseController.createExpense);
 
-// Create a new expense
-router.post('/', async (req, res) => {
-  const expense = new Expense({
-    title: req.body.title,
-    amount: req.body.amount,
-    category: req.body.category,
-  });
+// Route to get all expenses
+router.get('/', expenseController.getExpenses);
 
-  try {
-    const newExpense = await expense.save();
-    res.status(201).json(newExpense);
-  } catch (err) {
-    res.status(400).json({ message: err.message });
-  }
-});
+// Route to get a single expense by ID
+router.get('/:id', expenseController.getExpenseById);
 
-// Update an expense
-router.put('/:id', async (req, res) => {
-  try {
-    const updatedExpense = await Expense.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    res.json(updatedExpense);
-  } catch (err) {
-    res.status(400).json({ message: err.message });
-  }
-});
+// Route to update an expense by ID
+router.put('/:id', expenseController.updateExpense);
 
-// Delete an expense
-router.delete('/:id', async (req, res) => {
-  try {
-    await Expense.findByIdAndDelete(req.params.id);
-    res.status(200).json({ message: 'Expense deleted' });
-  } catch (err) {
-    res.status(400).json({ message: err.message });
-  }
-});
+// Route to delete an expense by ID
+router.delete('/:id', expenseController.deleteExpense);
 
 module.exports = router;
